@@ -117,7 +117,7 @@ _3. Theater Database Engine
 
 - User cancels previous purchased ticket
 	
-	Scenario: If the user regrets purchasing the ticket, he will send a cancelation request to the system. Once the system processes and approves the cancellation, the refund will be processed to the original payment institution that the user entered. 
+	Scenario: If the user regrets purchasing the ticket, he will send a cancellation request to the system. Once the system processes and approves the cancellation, the refund will be processed to the original payment institution that the user entered. 
 	Objects:
 	- cancellation
 	- receipt
