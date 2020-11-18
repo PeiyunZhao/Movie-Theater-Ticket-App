@@ -1,5 +1,6 @@
 # Movie-Theater-Ticket-App
 a movie theater ticket registration app designed for ENSF 619 final project
+https://docs.google.com/document/d/1-e9NbNx3BzrGEnxLfodu--Qlnp9p2sQ7pSsDZIPXnLI/edit
 
 ###List of Actors:
 _1. Un-registered users
