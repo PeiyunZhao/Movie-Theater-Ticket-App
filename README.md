@@ -1,7 +1,11 @@
 # Movie-Theater-Ticket-App
 a movie theater ticket registration app designed for ENSF 619 final project
+
 Use case:
 https://docs.google.com/document/d/1OO8YnOzH157wrfK1J3_0L7TOs0DL6RLDxBa117AwTck/edit?usp=sharing
+
+Sequence Diagram:
+https://lucid.app/lucidchart/invitations/accept/76726b93-bef1-4cd8-bdf2-d81112953080
 
 ###List of Actors:
 _1. Un-registered users
