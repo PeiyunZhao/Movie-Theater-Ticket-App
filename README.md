@@ -6,6 +6,7 @@ https://docs.google.com/document/d/1OO8YnOzH157wrfK1J3_0L7TOs0DL6RLDxBa117AwTck/
 
 Sequence Diagram:
 https://lucid.app/lucidchart/invitations/accept/76726b93-bef1-4cd8-bdf2-d81112953080
+https://lucid.app/lucidchart/fcb507d7-931c-4a0d-8b56-e54fca83c2eb/edit?page=ep4Prb-ojLnV#?folder_id=home&browser=icon
 
 Deployment Diagram:
 https://lucid.app/lucidchart/81b1da15-5d9b-4c7c-aa70-3d9ce42591e7/edit?beaconFlowId=C10261E530473EFC&page=SD~btuP.wggj#?folder_id=home&browser=icon
