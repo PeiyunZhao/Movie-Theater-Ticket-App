@@ -3696,7 +3696,7 @@
 											"top": 126,
 											"width": 775,
 											"height": 13,
-											"text": "Controller"
+											"text": "Control"
 										},
 										{
 											"_type": "LabelView",
@@ -3832,7 +3832,7 @@
 											"top": 360,
 											"width": 94.62451171875,
 											"height": 13,
-											"text": "(from Controller)"
+											"text": "(from Control)"
 										},
 										{
 											"_type": "LabelView",
@@ -4168,7 +4168,7 @@
 											"top": 280,
 											"width": 94.62451171875,
 											"height": 13,
-											"text": "(from Controller)"
+											"text": "(from Control)"
 										},
 										{
 											"_type": "LabelView",
@@ -4472,7 +4472,7 @@
 											"top": -288,
 											"width": 94.62451171875,
 											"height": 13,
-											"text": "(from Controller)"
+											"text": "(from Control)"
 										},
 										{
 											"_type": "LabelView",
@@ -4774,7 +4774,7 @@
 											"top": -264,
 											"width": 94.62451171875,
 											"height": 13,
-											"text": "(from Controller)"
+											"text": "(from Control)"
 										},
 										{
 											"_type": "LabelView",
@@ -5147,7 +5147,7 @@
 											"top": -184,
 											"width": 94.62451171875,
 											"height": 13,
-											"text": "(from Controller)"
+											"text": "(from Control)"
 										},
 										{
 											"_type": "LabelView",
@@ -5362,7 +5362,7 @@
 											"top": -96,
 											"width": 94.62451171875,
 											"height": 13,
-											"text": "(from Controller)"
+											"text": "(from Control)"
 										},
 										{
 											"_type": "LabelView",
@@ -5804,7 +5804,7 @@
 											"top": 102,
 											"width": 687,
 											"height": 13,
-											"text": "Viewer"
+											"text": "View"
 										},
 										{
 											"_type": "LabelView",
@@ -5943,7 +5943,7 @@
 											"top": 56,
 											"width": 77.771484375,
 											"height": 13,
-											"text": "(from Viewer)"
+											"text": "(from View)"
 										},
 										{
 											"_type": "LabelView",
@@ -6228,7 +6228,7 @@
 											"top": -1848,
 											"width": 77.771484375,
 											"height": 13,
-											"text": "(from Viewer)"
+											"text": "(from View)"
 										},
 										{
 											"_type": "LabelView",
@@ -6460,7 +6460,7 @@
 											"top": -528,
 											"width": 77.771484375,
 											"height": 13,
-											"text": "(from Viewer)"
+											"text": "(from View)"
 										},
 										{
 											"_type": "LabelView",
@@ -6692,7 +6692,7 @@
 											"top": 784,
 											"width": 77.771484375,
 											"height": 13,
-											"text": "(from Viewer)"
+											"text": "(from View)"
 										},
 										{
 											"_type": "LabelView",
@@ -6960,7 +6960,7 @@
 											"top": 584,
 											"width": 77.771484375,
 											"height": 13,
-											"text": "(from Viewer)"
+											"text": "(from View)"
 										},
 										{
 											"_type": "LabelView",
@@ -7228,7 +7228,7 @@
 											"top": 1136,
 											"width": 77.771484375,
 											"height": 13,
-											"text": "(from Viewer)"
+											"text": "(from View)"
 										},
 										{
 											"_type": "LabelView",
@@ -7513,7 +7513,7 @@
 											"top": 672,
 											"width": 77.771484375,
 											"height": 13,
-											"text": "(from Viewer)"
+											"text": "(from View)"
 										},
 										{
 											"_type": "LabelView",
@@ -9122,7 +9122,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "Controller",
+					"name": "Control",
 					"ownedElements": [
 						{
 							"_type": "UMLClass",
@@ -9839,7 +9839,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "Viewer",
+					"name": "View",
 					"ownedElements": [
 						{
 							"_type": "UMLClass",
