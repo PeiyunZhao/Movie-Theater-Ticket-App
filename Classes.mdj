@@ -7502,7 +7502,8 @@
 											"_parent": {
 												"$ref": "AAAAAAF17AcUd96Ke5E="
 											},
-											"name": "User user"
+											"name": "User user",
+											"type": ""
 										}
 									]
 								}
@@ -8074,7 +8075,8 @@
 											"_parent": {
 												"$ref": "AAAAAAF17AByrd5sj60="
 											},
-											"name": "User user"
+											"name": "User user",
+											"type": ""
 										}
 									]
 								}
@@ -8095,7 +8097,8 @@
 										"$ref": "AAAAAAF16qb/zKyHkxU="
 									},
 									"name": "user User",
-									"visibility": "private"
+									"visibility": "private",
+									"type": ""
 								}
 							],
 							"operations": [
@@ -8341,7 +8344,8 @@
 											"_parent": {
 												"$ref": "AAAAAAF16rEHV63yFb0="
 											},
-											"name": "ActionEvent e"
+											"name": "ActionEvent e",
+											"type": ""
 										}
 									]
 								}
