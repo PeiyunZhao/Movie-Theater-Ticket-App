@@ -13,17 +13,24 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
+import javax.swing.event.ListSelectionListener;
+
+import Control.DBController;
+import Control.TicketPurchaseController;
+import Model.Movie;
 
 
-public class TicketPurchaseGUI extends JFrame implements ActionListener,ItemListener{
+public class TicketPurchaseGUI extends JFrame implements ItemListener{
 	private String roomNum="room1";
 	private JTextField seatNum=null;
 	private String selectTime="9:30:00";
 	private JButton nextBtn,backBtn;
 	private JComboBox<String> movieCbx,roomCbx,startTime;
+	private JList movieJList;
 	
 	private String[] time = { "9:30:00","12:00:00", "14:40:00", "17:20:00"};
 
@@ -148,38 +155,65 @@ public class TicketPurchaseGUI extends JFrame implements ActionListener,ItemList
 		backBtn = new JButton("Back");
 		backBtn.setBounds(240, 165, 100, 26);
 		infoPanel.add(backBtn);
-		backBtn.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-//				dispose();
-//				WelcomeGUI view = new WelcomeGUI();
-//				view.setVisible(true);
-			}
-		});
+		
 		
 		nextBtn = new JButton("Next");
 		nextBtn.setBounds(370, 165, 100, 26);
 		infoPanel.add(nextBtn);
-		nextBtn.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		
-		this.setVisible(true);
+
+		//this.setVisible(true);
 	}
+
+	
+	public static void main(String[] args) {
+		DBController theModel = new DBController();
+		theModel.populateList();
+		TicketPurchaseGUI theView = new TicketPurchaseGUI();
+		TicketPurchaseController theController = new TicketPurchaseController(theModel,theView);
+		theView.pack();
+		theView.setVisible(true);
+
+	
+	}
+
+	
+
+	public void setMovieJList(JList movieJList) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void addBackBtnListener(ActionListener listenForBackBtn) {
+		// TODO Auto-generated method stub
+	
+		backBtn.addActionListener(listenForBackBtn);
+	}
+
+	public void addNextBtnListener(ActionListener listenForNextBtn) {
+		// TODO Auto-generated method stub
+	
+		backBtn.addActionListener(listenForNextBtn);
+	}
+
+	public void addSeatBtnListener(ActionListener listenForSeatBtn) {
+		// TODO Auto-generated method stub
+	
+		backBtn.addActionListener(listenForSeatBtn);
+	}
+	
+	public void addMovieListListener(ListSelectionListener listenerForJList) {
+		movieJList.addListSelectionListener(listenerForJList);
+	}
+
 
 	@Override
 	public void itemStateChanged(ItemEvent e) {
 		// TODO Auto-generated method stub
+		
 	}
 
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-	}
-	
-	public static void main(String[] args) {
-		new TicketPurchaseGUI();
+	public void displayInfo(Movie tempClient) {
+		seatNum.setText("A1");
+		
 	}
 }

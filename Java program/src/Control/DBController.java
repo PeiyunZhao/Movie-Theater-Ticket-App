@@ -2,9 +2,15 @@ package Control;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+
+import javax.swing.DefaultListModel;
+import javax.swing.JList;
+
+import Model.Movie;
 
 public class DBController {
 	public Connection jdbc_connection;
@@ -12,7 +18,12 @@ public class DBController {
 	public String localhost = "3306", databaseName = "movieTheatre";
 	public String connectionInfo = "jdbc:mysql://localhost:" + localhost + "/" + databaseName+"?serverTimezone=UTC",  
 			  login          = "root",
-			  password       = "xxxxxx";
+			  password       = "lindaA5585769.";
+	
+	private String tableName = "movie";
+	private int counter = 0;
+	private JList<Movie> movieJList;
+	private DefaultListModel movieList = new DefaultListModel();
 	
 	public DBController() {
 		try{
@@ -59,6 +70,44 @@ public class DBController {
 		String sql = "SELECT * FROM " + tableName + " WHERE " + attributeName + "=" + searchString;		
 		return readFromTable(sql);
 	}
+
+	
+
+	public DefaultListModel<Movie> getMovieList() {
+		// TODO Auto-generated method stub
+		return movieList;
+	}
+	public JList<Movie> getClientJList() {
+		return movieJList;
+	}
+
+	
+	public JList populateList() {
+		String sql = "SELECT * FROM " + tableName;
+		ResultSet movies;
+		Movie tempMovie;
+		try {
+			PreparedStatement statement2 = jdbc_connection.prepareStatement(sql);
+			movies = statement2.executeQuery();
+			while(movies.next())
+			{
+				tempMovie = new Movie(movies.getInt("mid"),
+						movies.getString("mname"), 
+						movies.getString("mtype"),  
+						movies.getBoolean("mreserve"),  
+						movies.getDouble("mprice"));
+				movieList.add(counter,tempMovie);
+				counter = counter + 1;
+			}
+			movies.close();
+			statement2.close();
+			movieJList = new JList(movieList);
+			return movieJList;
+		} catch (SQLException e) { e.printStackTrace(); }
+		
+		return null;
+	}
+	
 	
 	
 	
