@@ -27,11 +27,12 @@ CREATE TABLE movie (
 
 DROP TABLE IF EXISTS showtime;
 CREATE TABLE showtime (
-  showid			char(9) not null,
+  showtimeid			char(9) not null,
+  movieid            char(9) not null,
   showtime			varchar(20) not null,
-  showroom         varchar(20) not null,
-  primary key (showid)
-  
+  room         varchar(20) not null,
+  primary key (showtimeid)
+ 
 );
 
 DROP TABLE IF EXISTS seat;
@@ -45,7 +46,7 @@ CREATE TABLE seat (
   seattaken      boolean not null,
   
   primary key (seatid)
-  
+ 
 );
 
 
