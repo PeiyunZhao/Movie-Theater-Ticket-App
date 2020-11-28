@@ -11,7 +11,8 @@ public class MainController {
 	public void DatabaseImport() {
 		
 		DBController dbControl = new DBController();
-		dbControl.populateList();
+		dbControl.populateMovieList();
+		dbControl.populateShowtime();
 	}
 	
 	
@@ -23,6 +24,8 @@ public class MainController {
 		
 	}
 
+
+	
 	
 	
 }

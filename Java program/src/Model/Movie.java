@@ -22,7 +22,7 @@ public class Movie {
 	
 	@Override
 	public String toString() {
-		String movie="Movie name: "+title+" costs "+price;
+		String movie="Movie name: "+title+" costs "+price+" is "+reservationOnly;
 		return movie;
 		
 	}

@@ -14,10 +14,6 @@ public class ShowTime {
 		return showTime;
 	}
 
-	public void displaySeats() {
-
-	}
-
 	public Seat selectSeat() {
 		Seat selectedSeat = null;
 		return selectedSeat;
