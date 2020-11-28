@@ -1,6 +1,7 @@
 package Control;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -65,12 +66,6 @@ public class DBController {
 		String sql = "SELECT * FROM " + tableName + " WHERE " + attributeName + "='" + searchString + "';";		
 		return readFromTable(sql);
 	}
-	
-	
-	public static void main(String[] args) {
 
-		DBController theModel = new DBController();
-		//theModel.populateList();
-	  
-	}
+	
 }

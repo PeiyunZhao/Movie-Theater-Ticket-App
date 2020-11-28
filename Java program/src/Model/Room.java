@@ -24,5 +24,11 @@ public class Room {
 	public void setRoomNumber(int roomNumber) {
 		this.roomNumber = roomNumber;
 	}
-
+	
+	@Override
+	public String toString() {
+	
+		String room="room is "+ roomNumber;
+		return room;
+	}
 }

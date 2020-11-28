@@ -1,5 +1,6 @@
 package Control;
 
+import java.io.IOException;
 
 public class MainController {
 	private LogisticsController logisticConrol;
@@ -8,11 +9,9 @@ public class MainController {
 	private UserController userControl;
 	private ViewController viewControl;
 	
-	public void DatabaseImport() {
+	public static void DatabaseImport() throws IOException {
 		
-		DBController dbControl = new DBController();
-		dbControl.populateMovieList();
-		dbControl.populateShowtime();
+		
 	}
 	
 	
@@ -20,7 +19,9 @@ public class MainController {
 		
 	}
     
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
+	
+		
 		
 	}
 
