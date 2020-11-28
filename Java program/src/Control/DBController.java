@@ -19,7 +19,7 @@ public class DBController {
 
 	public Connection jdbc_connection;
 	public Statement statement;
-	public String databaseName = "movieTheatre", tableName = "movie", dataFile = "clients.txt";
+	public String databaseName = "movieTheatre", tableName = "movie";
 	private JList<Movie> movieJList;
 
 	public JList<Movie> getMovieJList() {
@@ -81,7 +81,7 @@ public class DBController {
 			PreparedStatement statement2 = jdbc_connection.prepareStatement(sql);
 			movies = statement2.executeQuery();
 			while (movies.next()) {
-				tempmovie = new Movie(movies.getInt("mid"), movies.getString("mname"), movies.getString("mtype"),
+				tempmovie = new Movie(movies.getInt("mid"), movies.getString("mname"), 
 						movies.getBoolean("mreserve"), movies.getDouble("mprice"));
 				movieList.add(counter, tempmovie);
 				counter = counter + 1;
@@ -99,10 +99,10 @@ public class DBController {
 		return null;
 	}
 
-//	public static void main(String[] args) {
-//
-//		DBController theModel = new DBController();
-//		theModel.populateList();
-//
-//	}
+	public static void main(String[] args) {
+
+		DBController theModel = new DBController();
+		theModel.populateList();
+	  
+	}
 }

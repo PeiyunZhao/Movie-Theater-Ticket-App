@@ -9,13 +9,12 @@ public class Movie {
 	private int MovieId;
 	private boolean reservationOnly;
 	private double price;
-	private String type;
 	
-	public Movie(int MovieId,String title,String type,boolean reservationOnly,double price) {
+	
+	public Movie(int MovieId,String title,boolean reservationOnly,double price) {
 		this.MovieId= MovieId;
 		this.title=title;
 		this.reservationOnly=reservationOnly;
-		this.type=type;
 		this.price=price;
 
 		
@@ -23,7 +22,7 @@ public class Movie {
 	
 	@Override
 	public String toString() {
-		String movie="";
+		String movie="Movie name: "+title+" costs "+price;
 		return movie;
 		
 	}
@@ -60,14 +59,7 @@ public class Movie {
 		this.price = price;
 	}
 
-	public String getType() {
-		return type;
-	}
-
-	public void setType(String type) {
-		this.type = type;
-	}
-
+	
 	
 
 }

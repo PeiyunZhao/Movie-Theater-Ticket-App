@@ -10,6 +10,8 @@ public class MainController {
 	
 	public void DatabaseImport() {
 		
+		DBController dbControl = new DBController();
+		dbControl.populateList();
 	}
 	
 	
