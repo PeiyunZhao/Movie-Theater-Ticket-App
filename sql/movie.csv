@@ -1,20 +1,7 @@
-mid,mname,mtype,mreserve,mprice
-3001,Ava,Action,0,35
-3002,Extraction,Action,0,25
-3003,Primal,Action,0,25
-3004,Bloodshot,Action,0,25
-3005,Underwater,Action,0,30
-3006,Emma,Romantic,0,30
-3007,Rebecca,Romantic,0,30
-3008,After,Romantic,0,27
-3009,Your Name,Romantic,0,27
-3010,Let It Snow,Romantic,0,28
-3011,Last Christmas,Romantic,0,28
-3012,Little Woman,Romantic,1,28
-3013,Come Play,Horror,1,35
-3014,The Silence,Horror,1,35
-3015,CountDown,Horror,1,35
-3016,The Hunt,Horror,1,30
-3017,Antebellum,Horror,1,28
-3018,The Platform,Horror,1,28
-3019,The New Mutants,Horror,1,28
+mid,mname,mreserve,mprice
+3001,Ava,0,35
+3002,Extraction,0,25
+3003,Primal,0,25
+3004,Bloodshot,0,25
+3005,Underwater,1,30
+3006,Emma,1,30

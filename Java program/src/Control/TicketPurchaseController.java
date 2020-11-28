@@ -25,7 +25,8 @@ public class TicketPurchaseController {
 		this.movieView = movieView;
 		movieList = movieModel.getMovieList();
 		this.movieJList = new JList(movieList);
-		
+		System.out.println(movieJList);
+		System.out.println(movieList);
 		movieView.setMovieJList(movieJList);
 		
 		movieView.addBackBtnListener(new BackBtnListener());

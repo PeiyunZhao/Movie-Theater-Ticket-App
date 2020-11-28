@@ -1,5 +1,6 @@
 package View;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -15,7 +16,9 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextField;
+import javax.swing.ScrollPaneLayout;
 import javax.swing.border.TitledBorder;
 import javax.swing.event.ListSelectionListener;
 
@@ -31,6 +34,7 @@ public class TicketPurchaseGUI extends JFrame implements ItemListener{
 	private JButton nextBtn,backBtn;
 	private JComboBox<String> movieCbx,roomCbx,startTime;
 	private JList movieJList;
+	private JScrollPane movieResults = new JScrollPane(); 
 	
 	private String[] time = { "9:30:00","12:00:00", "14:40:00", "17:20:00"};
 
@@ -55,6 +59,12 @@ public class TicketPurchaseGUI extends JFrame implements ItemListener{
 		movieCbx.setBounds(230, 70, 140, 30);
 		this.add(movieCbx);
 		movieCbx.addItem("Movie List"); 
+		
+		
+		movieResults = new JScrollPane(movieJList);
+        movieResults.setLayout(new ScrollPaneLayout());
+		
+		
 		
 		JLabel selRoom = new JLabel ("Select Room:");
 		selRoom.setBounds(55, 120, 150, 26);
@@ -104,6 +114,7 @@ public class TicketPurchaseGUI extends JFrame implements ItemListener{
 		priceLbl.setBounds(55, 250, 140, 26);
 		priceLbl.setFont(new Font("Courier New", Font.BOLD,16));
 		this.add(priceLbl);
+		
 		
 		JTextField priceTxt = new JTextField();
 		priceTxt.setBounds(230, 250, 80, 26);
@@ -165,17 +176,6 @@ public class TicketPurchaseGUI extends JFrame implements ItemListener{
 	}
 
 	
-	public static void main(String[] args) {
-		DBController theModel = new DBController();
-		theModel.populateList();
-		TicketPurchaseGUI theView = new TicketPurchaseGUI();
-		TicketPurchaseController theController = new TicketPurchaseController(theModel,theView);
-		theView.pack();
-		theView.setVisible(true);
-
-	
-	}
-
 	
 
 	public void setMovieJList(JList movieJList) {
@@ -192,17 +192,17 @@ public class TicketPurchaseGUI extends JFrame implements ItemListener{
 	public void addNextBtnListener(ActionListener listenForNextBtn) {
 		// TODO Auto-generated method stub
 	
-		backBtn.addActionListener(listenForNextBtn);
+		nextBtn.addActionListener(listenForNextBtn);
 	}
 
 	public void addSeatBtnListener(ActionListener listenForSeatBtn) {
 		// TODO Auto-generated method stub
 	
-		backBtn.addActionListener(listenForSeatBtn);
+	//	seatBtn.addActionListener(listenForSeatBtn);
 	}
 	
 	public void addMovieListListener(ListSelectionListener listenerForJList) {
-		movieJList.addListSelectionListener(listenerForJList);
+	//	movieJList.addListSelectionListener(listenerForJList);
 	}
 
 
@@ -216,4 +216,20 @@ public class TicketPurchaseGUI extends JFrame implements ItemListener{
 		seatNum.setText("A1");
 		
 	}
+	
+
+	public static void main(String[] args) {
+		DBController theModel = new DBController();
+		theModel.populateList();
+		TicketPurchaseGUI theView = new TicketPurchaseGUI();
+		TicketPurchaseController theController = new TicketPurchaseController(theModel,theView);
+		//theView.pack();
+		theView.setVisible(true);
+
+	
+	}
+
+	
+	
+	
 }

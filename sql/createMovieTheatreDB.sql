@@ -18,7 +18,6 @@ DROP TABLE IF EXISTS movie;
 CREATE TABLE movie (
   mid			char(9) not null,
   mname         varchar(50) not null,
-  mtype         varchar(30) not null,
   mreserve      boolean not null,
   mprice	    float,
   primary key (mid)
@@ -29,7 +28,7 @@ DROP TABLE IF EXISTS showtime;
 CREATE TABLE showtime (
   showtimeid			char(9) not null,
   movieid            char(9) not null,
-  showtime			varchar(20) not null,
+  showtime			DATETIME(6) not null,
   room         varchar(20) not null,
   primary key (showtimeid)
  
