@@ -17,9 +17,11 @@ public class ShowTime {
 
 	
 	public ShowTime(int showtimeId, Movie movie, LocalDateTime dateTime,String room ) {
+	//public ShowTime(int showtimeId, Movie movie, Timestamp MovieTime,String room ) {
 		this.showtimeId=showtimeId;
 		this.movie=movie;
 		this.dateTime=dateTime;
+	//	this.MovieTime=MovieTime;
 		this.room=room;
 	//	dateTime = movieTime2.getTimestamp();
 	
@@ -28,7 +30,7 @@ public class ShowTime {
 
 	@Override
 	public String toString() {
-		String showTime = "showtime for movie "+movie.getTitle()+ " is "+MovieTime+" at "+room;
+		String showTime = "showtime for movie "+movie.getTitle()+ " is "+dateTime+" at "+room;
 
 		return showTime;
 	}
@@ -62,7 +64,7 @@ public class ShowTime {
 
 	public Movie getMovie() {
 		
-		return m;
+		return movie;
 	}
 
 }

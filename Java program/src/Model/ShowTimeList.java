@@ -31,6 +31,7 @@ public class ShowTimeList {
 			if (s.getMovieId()==movieId)
 				sList.add(s);
 		}
+		
 		return sList;
 	}
 

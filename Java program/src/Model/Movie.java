@@ -5,7 +5,8 @@ import java.util.ArrayList;
 public class Movie {
 	
 	private String title;
-	private ArrayList<Theater> theaters;
+	//private ShowTimeList showtimelist;
+	private ArrayList<ShowTime> showtimes;
 	private int MovieId;
 	private boolean reservationOnly;
 	private double price;
@@ -16,8 +17,13 @@ public class Movie {
 		this.title=title;
 		this.reservationOnly=reservationOnly;
 		this.price=price;
+		showtimes=new ArrayList<ShowTime>();
 
 		
+	}
+	
+	public void addShowtime(ShowTime st) {
+		showtimes.add(st);
 	}
 	
 	@Override
@@ -59,6 +65,9 @@ public class Movie {
 		this.price = price;
 	}
 
+	public ArrayList<ShowTime> getShowTimes() {
+		return showtimes;
+	}
 	
 	
 

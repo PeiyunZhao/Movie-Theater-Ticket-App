@@ -15,7 +15,7 @@ public class TicketPurchaseController {
 	
 	private DBController movieModel;
 	private TicketPurchaseGUI movieView;
-	private JList movieJList = new JList();
+	
 	private DefaultListModel<Movie> movieList;
 	private Movie selectedMovie;
 	private int selectedIndex;
@@ -59,7 +59,7 @@ public class TicketPurchaseController {
 	class MovieListListener implements ListSelectionListener{
 		@Override
 		public void valueChanged(ListSelectionEvent evt) {
-			//Client selectedClient = (Client) ;
+		
 			selectedMovie = (Movie) movieJList.getSelectedValue();
 			if(selectedMovie !=null) {
 				selectedIndex = movieJList.getSelectedIndex();

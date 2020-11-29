@@ -15,13 +15,13 @@ import Model.Theater;
 
 
 public class LogisticsController{
-	private ArrayList<Movie> movies;
+//	private ArrayList<Movie> movies;
 	private MovieList movieList;
 	private ShowTimeList showtimeList;
-	private ArrayList<ShowTime> showtimes;
+//	private ArrayList<ShowTime> showtimes;
 	private Movie movie;
 	private MainController mainController;
-	private DBController dbController;
+//	private DBController dbController;
 
 	
 	public Movie selectMovie(int id) {
@@ -42,32 +42,38 @@ public class LogisticsController{
 		return selectedShowtime;
 	}
 	
-	public void run() {
-	    dbController = new DBController();
-	    movieList=new MovieList(dbController.getMovies());
-	
-		ShowTimeList theShowTime = new ShowTimeList(dbController.getShowTime());
-		ArrayList<Movie> regularMovies = movieList.listRegularMovies();
-		System.out.println(regularMovies);
-		
+	public ArrayList<Movie> listRegularMovies() {
+		return movieList.listRegularMovies();
 	}
+	
+	public ArrayList<Movie> listReservationMovies(){
+		return movieList.listReservationMovies();
+	}
+	
+//	public void run() {
+//	    dbController = new DBController(this);
+//	    movieList=new MovieList(dbController.getMovies());
+//	
+//		ShowTimeList theShowTime = new ShowTimeList(dbController.getShowTime());
+//		ArrayList<Movie> regularMovies = movieList.listRegularMovies();
+//		System.out.println(regularMovies);
+//		
+//	}
 
-	public ArrayList<ShowTime> getShowtimes() {
-		return showtimes;
+	public ShowTimeList getShowTimeList() {
+		return showtimeList;
 	}
 
 	public void setShowtimes(ArrayList<ShowTime> showtimes) {
-		this.showtimes = showtimes;
-	}
-
-	public ArrayList<Movie> getMovies() {
-		return movies;
+		this.showtimeList = new ShowTimeList(showtimes);
 	}
 
 	public void setMovies(ArrayList<Movie> movies) {
-		this.movies = movies;
+		this.movieList = new MovieList(movies);
 	}
-	
+	public MovieList getMovieList() {
+		return movieList;
+	}
 	
 
 	

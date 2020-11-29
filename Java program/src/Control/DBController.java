@@ -31,21 +31,25 @@ public class DBController {
 	private ArrayList<ShowTime> showtimes;
 	private MovieList movieList;
 	private ShowTimeList showtimeList;
+	private LogisticsController lc;
 	
 
 	public String connectionInfo = "jdbc:mysql://localhost:3306/movieTheatre", login = "root",
 			password = "lindaA5585769.";
 
-	public DBController() {
+	public DBController(LogisticsController lc) {
 		try {
-
+            this.lc=lc;
 			Class.forName("com.mysql.jdbc.Driver");
 
 			// If this fails make sure your connectionInfo and login/password are correct
 			jdbc_connection = DriverManager.getConnection(connectionInfo, login, password);
 			System.out.println("Connected to: " + connectionInfo + "\n");
 			movies=allMovies();
+			lc.setMovies(movies);
 			showtimes=allShowTime();
+			lc.getMovieList().importShowTime(showtimes);
+			
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -89,7 +93,7 @@ public class DBController {
 			while (rs.next()) {
 				String movieID = rs.getString(1);
 				String movieName = rs.getString(2);
-			//	String isReserve = rs.getString(3);
+		
 				boolean isReserve = rs.getBoolean(3);
 				String moviePrice = rs.getString(4);
 	
@@ -116,10 +120,10 @@ public class DBController {
 				String movieID = rs.getString(2);
 				Timestamp movieTime = rs.getTimestamp(3);
 				
-				System.out.println(movieTime);
-			   LocalDateTime dt=convertToEntityAttribute(movieTime);
+			
 				String movieRoom = rs.getString(4);
 				 movieList=new MovieList(getMovies());
+				 LocalDateTime dt=convertToEntityAttribute(movieTime);
 				ShowTime aShowTime=new ShowTime(Integer.parseInt(showtimeID),movieList.searchMovieId(Integer.parseInt(movieID)),dt,movieRoom);
 				
 				showtimes.add(aShowTime);
@@ -132,18 +136,17 @@ public class DBController {
 		return showtimes;
 	}
 	
-	 public Timestamp convertToDatabaseColumn(LocalDateTime ldt) {
-	        return Timestamp.valueOf(ldt);
-	    }
+	public Timestamp convertToDatabaseColumn(LocalDateTime ldt) {
+        return Timestamp.valueOf(ldt);
+    }
 
 
-	    public LocalDateTime convertToEntityAttribute(Timestamp ts) {
-	    	if(ts!=null){
-	    		   return ts.toLocalDateTime();
-	    	}
-	    	return null;
-	    }
-
+    public LocalDateTime convertToEntityAttribute(Timestamp ts) {
+    	if(ts!=null){
+    		   return ts.toLocalDateTime();
+    	}
+    	return null;
+    }
 	    public ArrayList<Movie> getMovies(){
 	    	return movies;
 	    }
