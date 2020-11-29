@@ -44,9 +44,9 @@ public class LogisticsController{
 	
 	public void run() {
 	    dbController = new DBController();
-	    movieList=new MovieList(dbController.allMovies());
+	    movieList=new MovieList(dbController.getMovies());
 	
-		ShowTimeList theShowTime = new ShowTimeList(dbController.allShowTime());
+		ShowTimeList theShowTime = new ShowTimeList(dbController.getShowTime());
 		ArrayList<Movie> regularMovies = movieList.listRegularMovies();
 		System.out.println(regularMovies);
 		

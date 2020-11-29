@@ -44,6 +44,9 @@ public class DBController {
 			// If this fails make sure your connectionInfo and login/password are correct
 			jdbc_connection = DriverManager.getConnection(connectionInfo, login, password);
 			System.out.println("Connected to: " + connectionInfo + "\n");
+			movies=allMovies();
+			showtimes=allShowTime();
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} catch (Exception e) {
@@ -112,10 +115,11 @@ public class DBController {
 				String showtimeID = rs.getString(1);
 				String movieID = rs.getString(2);
 				Timestamp movieTime = rs.getTimestamp(3);
+				
 				System.out.println(movieTime);
-			    LocalDateTime dt=convertToEntityAttribute(movieTime);
+			   LocalDateTime dt=convertToEntityAttribute(movieTime);
 				String movieRoom = rs.getString(4);
-	
+				 movieList=new MovieList(getMovies());
 				ShowTime aShowTime=new ShowTime(Integer.parseInt(showtimeID),movieList.searchMovieId(Integer.parseInt(movieID)),dt,movieRoom);
 				
 				showtimes.add(aShowTime);
@@ -140,6 +144,13 @@ public class DBController {
 	    	return null;
 	    }
 
+	    public ArrayList<Movie> getMovies(){
+	    	return movies;
+	    }
+	    
+	    public ArrayList<ShowTime> getShowTime(){
+	    	return showtimes;
+	    }
 	
 	
 
