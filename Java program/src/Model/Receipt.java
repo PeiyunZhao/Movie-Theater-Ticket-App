@@ -1,22 +1,58 @@
 package Model;
 
 import java.time.LocalDateTime;
+import java.util.Random;
 
 public class Receipt {
 	private Ticket ticket;
 	private int receiptId;
 	private int creditCard;
 	private LocalDateTime dateTime;
+	private String str;
+	private double price;
+	private boolean isRefunded = false;
 	
 	
-	@Override
-	public String toString() {
-		String receipt="";
-		return receipt;
+	public Receipt(Ticket ticket, User u, double price) {
+		this.receiptId= new Random().nextInt(100000);
+		this.price=price;
+		this.creditCard=u.getCreditCard();
+		this.ticket=ticket;
+		dateTime=LocalDateTime.now();
+		
+		str ="Date: "+dateTime+"\n"
+				+"Receipt Number: "+receiptId+"\n"
+				+" * Ticket number: "+ticket.getTicketId()+"\n"
+				+" * Movie: "+ticket.getShowtime().getMovie().getTitle()+"\n"
+				+" * ShowTime Purchased: "+ticket.getShowtime().getDateTime()+"\n"
+				+"Total Amount Spent: "+price+"\n";
 	}
 	
-	public void refund() {
+	public Receipt(User u, double price) {
+		this.receiptId= new Random().nextInt(100000);
+		this.creditCard=u.getCreditCard();
+		this.price=price;
+		dateTime=LocalDateTime.now();
 		
+		str ="Date: "+dateTime+"\n"
+				+"Receipt Number: "+receiptId+"\n"
+				+" * Account Renewal \n"
+				+"Total Amount Spent: "+price+"\n";
+	}
+
+
+	@Override
+	public String toString() {
+		return str;
+	}
+	
+	public void getRefund() {
+		isRefunded=true;
+		
+		str ="Date: "+dateTime+"\n"
+				+"Receipt Number: "+receiptId+"\n"
+				+" * Account Renewal \n"
+				+"Total Amount Refunded: "+price+"\n";
 	}
 	
 	

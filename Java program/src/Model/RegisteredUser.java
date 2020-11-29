@@ -1,9 +1,19 @@
 package Model;
 
-public class RegisteredUser extends User {
+import java.time.*;
+
+public class RegisteredUser extends User{
+	private LocalDateTime lastpaid;
 	
-	private boolean paidAnnual() {
-		return true;
+	public boolean paidAnnual() {
+		LocalDateTime from = lastpaid;
+        LocalDateTime to = LocalDateTime.now();
+
+        Duration duration = Duration.between(from, to);
+		
+        if (duration.toDays()>365) return true;
+		
+		else return false;
 	}
 
 	@Override

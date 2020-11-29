@@ -9,13 +9,24 @@ public class Ticket {
 	
 	
 	public void takeSeat() {
+		seat.setTicket(this);
 		
 	}
 	public void refund() {
 		
 	}
 	
-	
+	@Override
+	public String toString() {
+		String str=
+				"Ticket ID:"+ticketId+"\n"+
+				"Date: "+showtime.getDateTime()+"\n"+
+				"Movie: "+showtime.getMovie().getTitle()+"\n"+
+				"Room: "+showtime.getRoom()+"\n"+
+				"Seat: "+seat+"\n";
+				
+		return str;
+	}
 	
 	public int getTicketId() {
 		return ticketId;
@@ -47,8 +58,4 @@ public class Ticket {
 	public void setSeat(Seat seat) {
 		this.seat = seat;
 	}
-	
-	
-	
-
 }

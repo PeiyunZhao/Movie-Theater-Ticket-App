@@ -59,4 +59,10 @@ public class ShowTime {
 		return showtimeId;
 	}
 
+
+	public Movie getMovie() {
+		
+		return m;
+	}
+
 }

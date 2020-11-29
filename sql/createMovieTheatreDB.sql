@@ -9,7 +9,7 @@ CREATE TABLE registered_user (
   upassword	        varchar(50) not null, 
   uaddress	        varchar(50) not null, 
   uemail	        varchar(50) not null, 
-  upaiddate	        varchar(50) not null, 
+  upaiddate	        date(50) not null, 
   ucard  		char(30) not null,
   primary key (uid)
 );
