@@ -7,9 +7,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.BorderFactory;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -35,8 +37,12 @@ public class TicketPurchaseGUI extends JFrame implements ItemListener{
 	private JComboBox<String> movieCbx,roomCbx,startTime;
 	private JList movieJList;
 	private JScrollPane movieResults = new JScrollPane(); 
+	ArrayList <Movie> movies = new ArrayList<Movie>();
 	
 	private String[] time = { "9:30:00","12:00:00", "14:40:00", "17:20:00"};
+	private String[] movieStrList;
+	
+	
 
 	public TicketPurchaseGUI() {
 		this.setTitle("Buy Tickets");
@@ -55,10 +61,25 @@ public class TicketPurchaseGUI extends JFrame implements ItemListener{
 		selMovie.setFont(new Font("Courier New", Font.BOLD,16));
 		this.add(selMovie); 
 		
-		movieCbx= new JComboBox<String>();
+		DefaultComboBoxModel dml= new DefaultComboBoxModel();
+		DBController dbc = new DBController();
+		movies=dbc.allMovies();
+		System.out.println(movies.size());
+		for (int i = 0; i < movies.size(); i++) {
+		  dml.addElement(movies.get(i).getTitle());
+		}
+		
+		movieStrList = new String[movies.size()];
+		for(int i = 0; i < movies.size(); i++) {
+			movieStrList[i] = movies.get(i).getTitle();
+		}
+		
+		
+		movieCbx= new JComboBox(movieStrList);
+		
 		movieCbx.setBounds(230, 70, 140, 30);
 		this.add(movieCbx);
-		movieCbx.addItem("Movie List"); 
+	
 		
 		
 		movieResults = new JScrollPane(movieJList);
@@ -173,6 +194,9 @@ public class TicketPurchaseGUI extends JFrame implements ItemListener{
 		infoPanel.add(nextBtn);
 
 		//this.setVisible(true);
+		
+		
+		
 	}
 
 	
@@ -220,7 +244,7 @@ public class TicketPurchaseGUI extends JFrame implements ItemListener{
 
 	public static void main(String[] args) {
 		DBController theModel = new DBController();
-		theModel.populateList();
+	//	theModel.populateList();
 		TicketPurchaseGUI theView = new TicketPurchaseGUI();
 		TicketPurchaseController theController = new TicketPurchaseController(theModel,theView);
 		//theView.pack();

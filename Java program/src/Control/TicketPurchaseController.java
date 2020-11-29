@@ -23,11 +23,7 @@ public class TicketPurchaseController {
 	public TicketPurchaseController(DBController movieModel, TicketPurchaseGUI movieView) {
 	    this.movieModel=movieModel;
 		this.movieView = movieView;
-		movieList = movieModel.getMovieList();
-		this.movieJList = new JList(movieList);
-		System.out.println(movieJList);
-		System.out.println(movieList);
-		movieView.setMovieJList(movieJList);
+	
 		
 		movieView.addBackBtnListener(new BackBtnListener());
 		movieView.addNextBtnListener(new NextBtnListener());

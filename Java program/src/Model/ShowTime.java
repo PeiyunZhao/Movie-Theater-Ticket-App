@@ -1,5 +1,6 @@
 package Model;
 
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.Date;
 
@@ -9,21 +10,25 @@ public class ShowTime {
 	private String room;
 	private LocalDateTime dateTime;
 	private int showtimeId;
-	private int movieId;
+	private Movie movie;
 	//private LocalDateTime MovieTime;
-	private Date MovieTime;
+	private Timestamp MovieTime;
 	
-	public ShowTime(int showtimeId, int movieId, Date MovieTime,String room ) {
+
+	
+	public ShowTime(int showtimeId, Movie movie, LocalDateTime dateTime,String room ) {
 		this.showtimeId=showtimeId;
-		this.movieId=movieId;
-		this.MovieTime=MovieTime;
+		this.movie=movie;
+		this.dateTime=dateTime;
 		this.room=room;
+	//	dateTime = movieTime2.getTimestamp();
+	
 	}
 	
 
 	@Override
 	public String toString() {
-		String showTime = "showtime for movie "+movieId+ " is "+MovieTime+" at "+room;
+		String showTime = "showtime for movie "+movie.getTitle()+ " is "+MovieTime+" at "+room;
 
 		return showTime;
 	}
@@ -47,7 +52,7 @@ public class ShowTime {
 	}
 	
 	public int getMovieId() {
-		return movieId;
+		return movie.getMovieId();
 	}
 
 	public int getShowTimeId() {

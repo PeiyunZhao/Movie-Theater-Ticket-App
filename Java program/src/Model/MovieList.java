@@ -23,6 +23,15 @@ public class MovieList {
 		
 	}
 	
+	public Movie searchMovieId(int id) {
+		for (Movie m : movieList) {
+			if (m.getMovieId()== id)
+				return m;
+		}
+		
+		return null;
+	}
+	
 	public Movie findRegularMovies() {
 
 		for (Movie m : movieList) {
