@@ -79,18 +79,12 @@ public class RefundGUI extends JFrame {
 					tipMesg.setText("Can't find ficket,try again....");
 				}else {
 				
-//					ShowTime showTime = new ShowTime();
-//					AppSeting.showTime=	showTime.getTicketById(AppSeting.ticket.getShowtime().getStid()+"");
-//					boolean isrefund = ticket.refund(AppSeting.showTime.getDateTime());
-//					if(isrefund) {
-				//		if("N/A".equals(AppSeting.ticket.getUserId())){
 					if(ticket.checkRefundUser()==1) {
 
 							setVisible(false);
 							new RefundOUConfirmationGUI();
 						}if (ticket.checkRefundUser()==2){
-							//AppSeting.userType="RU";
-							//AppSeting.user = new RegisteredUser().getUserById(AppSeting.ticket.getUserId());
+						
 							setVisible(false);
 							new RefundRUConfirmationGUI();
 						}

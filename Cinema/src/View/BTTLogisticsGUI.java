@@ -30,12 +30,10 @@ public class BTTLogisticsGUI extends JFrame implements ActionListener {
 	private MovieList movielist;
 	private ArrayList<Movie> movies;
 	private List<Room> rooms = null;
-	//private List<ShowTime> showtimes = null;
 	private JComboBox<String> movieCbx, roomCbx;
 	private JComboBox<ShowTime> startTime;
 	private ShowTimeList showtimelist;
 
-//	public BTTLogisticsGUI(ArrayList<Movie> movies, List<ShowTime> showtimes, List<Room> rooms) {
 	public BTTLogisticsGUI(MovieList movielist, ShowTimeList showtimelist, List<Room> rooms) {
 		this.movielist = movielist;
 		this.rooms = rooms;

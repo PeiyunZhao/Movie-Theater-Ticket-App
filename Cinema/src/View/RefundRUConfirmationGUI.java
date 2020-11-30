@@ -66,24 +66,7 @@ public class RefundRUConfirmationGUI extends JFrame {
 		if (AppSeting.movie == null) {
 			JOptionPane.showMessageDialog(this, "System Error......");
 		} else {
-//			double price = AppSeting.movie.getPrice();
-//			String creditCard = AppSeting.user.getCreditCard();
-//
-//			DBController db = new DBController();
-//			String sql = "update bankaccount set balance=balance+" + price + " where acard="+creditCard;
-//			System.out.println(sql);
-//			int num = db.insertToTable(sql);
-			
-//			if (num == -1) {
-//				JOptionPane.showMessageDialog(this, "System Error......");
-//			}
-//
-//			String sql2 = "delete from ticket where ticketid=" + AppSeting.ticket.getTicketId();
-//			System.out.println(sql2);
-//			num = db.insertToTable(sql2);
-//			if (num == -1) {
-//				JOptionPane.showMessageDialog(this, "System Error......");
-//			}
+
 			  RegisteredUser ru=new RegisteredUser();
 			   boolean successRefund=ru.refund();
 			  if(successRefund==false) {

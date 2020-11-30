@@ -7,16 +7,13 @@ import javax.swing.JOptionPane;
 
 public class OrdinaryUserGUI extends JFrame{
 
-	public OrdinaryUserGUI() {
-		 
-	}
 	
 	public void displayMessage(String errorMessage) {
 		JOptionPane.showMessageDialog(this, errorMessage);
 	}
 	
 	public void addCalcListener (ActionListener listenForCalcButton) {
-		//loginBtn.addActionListener(listenForCalcButton);
+		
 	}
 
 }

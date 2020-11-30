@@ -77,7 +77,7 @@ public class RefundOUConfirmationGUI extends JFrame {
 		couponNumTxt.setEditable(false);
 		couponNumTxt.setColumns(10);
 
-		//int couponNum = (int) (Math.random() * (1000000 - 1999) + 1000);
+	
 		Coupon coupon = new Coupon();
 		int couponNum=coupon.generateCouponId();
 		couponNumTxt.setText(couponNum + "");
@@ -92,24 +92,7 @@ public class RefundOUConfirmationGUI extends JFrame {
 		  if(successRefund==false) {
 			  JOptionPane.showMessageDialog(this, "System Error......");
 		  }
-//
-//			double price = AppSeting.movie.getPrice();
-//			double couponPrice = price - price * 0.15;
-//
-//			DBController db = new DBController();
-//			String sql = "insert into coupon(couponId,credit)values(" + couponNum + "," + couponPrice + ")";
-//			System.out.println(sql);
-//			int num = db.insertToTable(sql);
-//			if (num == -1) {
-//				JOptionPane.showMessageDialog(this, "System Error......");
-//			}
-//
-//			String sql2 = "delete from ticket where ticketid=" + AppSeting.ticket.getTicketId();
-//			System.out.println(sql2);
-//			num = db.insertToTable(sql2);
-//			if (num == -1) {
-//				JOptionPane.showMessageDialog(this, "System Error......");
-//			}
+
 		}
 
 		JLabel lblNewLabel_1_1 = new JLabel("Coupon is valid for 1 year");

@@ -274,7 +274,6 @@ public class PaymentGUI extends JFrame {
 						}
 					}
 
-				//	DBController db = new DBController();
 					if(couponPrice!=0) {
 						price = price + couponPrice;
 
@@ -282,9 +281,7 @@ public class PaymentGUI extends JFrame {
 					}
 					int num=bank.updateBalance(price,creditCard);
 					
-//					String sql = "update bankaccount set balance=balance-" + price + " where acard=" + creditCard;
-//					System.out.println(sql);
-//					int num = db.insertToTable(sql);
+
 					if (num == -1) {
 						displayMessage("An exception occurred while making the payment......");
 					} else {
@@ -301,47 +298,6 @@ public class PaymentGUI extends JFrame {
 		this.setVisible(true);
 	}
 
-//	protected void useCoupons(String couponId) {
-//
-//		DBController db = new DBController();
-//		String sql = "delete from coupon where couponId=" + couponId;
-//		System.out.println(sql);
-//		 db.insertToTable(sql);
-//	}
-
-//	protected double testCoupon(int cpNum) {
-//		double credit=0;
-//		DBController db = new DBController();
-//
-//		String sql = "select * from coupon where couponId=" + cpNum;
-//		System.out.println(sql);
-//		try {
-//			ResultSet rs = db.readFromTable(sql);
-//			if(rs.next()) {
-//				credit = rs.getDouble("credit");
-//				return credit;
-//			}
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		}
-//		return 0;
-//	}
-
-//	protected boolean checkCard(String creditCard, String pwd) {
-//
-//		DBController db = new DBController();
-//		String sql = "select * from  bankaccount where acard='" + creditCard + "' and apassword='" + pwd+"'";
-//		System.out.println(sql);
-//		try {
-//			ResultSet rs = db.readFromTable(sql);
-//			if(rs.next()) {
-//				return true;
-//			}
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		}
-//		return false;
-//	}
 private void displayAfterCheckUserInfo() {
 	if (AppSeting.user.checkUserInfo(userName,card,pwd,email)==false) {
 		displayMessage("Incorrect user name entered!");
@@ -351,26 +307,6 @@ private void displayAfterCheckUserInfo() {
 	}
 }
 	
-	
-//	protected boolean checkUserInfo(String username, String card, String pwd, String email) {
-//		if (!username.equals(AppSeting.user.getName())) {
-//			displayMessage("Incorrect user name entered!");
-//			return false;
-//		}
-//		if (!pwd.equals(AppSeting.user.getPwd())) {
-//			displayMessage("Incorrect user password entered!");
-//			return false;
-//		}
-//		if (!card.equals(AppSeting.user.getCreditCard() + "")) {
-//			displayMessage("Incorrect Credit Card entered!");
-//			return false;
-//		}
-//		if (!email.equals(AppSeting.user.getEmail())) {
-//			displayMessage("Incorrect Email entered!");
-//			return false;
-//		}
-//		return true;
-//	}
 
 	public void displayMessage(String errorMessage) {
 		JOptionPane.showMessageDialog(this, errorMessage);
