@@ -17,24 +17,30 @@ import javax.swing.JOptionPane;
 
 import Model.AppSeting;
 import Model.Movie;
+import Model.MovieList;
 import Model.Room;
 import Model.Seat;
 import Model.ShowTime;
+import Model.ShowTimeList;
 
-public class BTTLogisticsGUI extends JFrame implements ActionListener{
+public class BTTLogisticsGUI extends JFrame implements ActionListener {
 	private String roomNum = "room1";
 	private String selectTime = "9:30:00";
 	private JButton nextBtn = null;
-	private List<Movie> movieList = null;
+	private MovieList movielist;
+	private ArrayList<Movie> movies;
 	private List<Room> rooms = null;
-	private List<ShowTime> showtimes = null;
+	//private List<ShowTime> showtimes = null;
 	private JComboBox<String> movieCbx, roomCbx;
 	private JComboBox<ShowTime> startTime;
+	private ShowTimeList showtimelist;
 
-	public BTTLogisticsGUI(ArrayList<Movie> movies, List<ShowTime> showtimes, List<Room> rooms) {
-		this.movieList = movies;
+//	public BTTLogisticsGUI(ArrayList<Movie> movies, List<ShowTime> showtimes, List<Room> rooms) {
+	public BTTLogisticsGUI(MovieList movielist, ShowTimeList showtimelist, List<Room> rooms) {
+		this.movielist = movielist;
 		this.rooms = rooms;
-		this.showtimes = showtimes;
+		this.movies=movielist.getMovies();
+		this.showtimelist = showtimelist;
 		this.setTitle("Choose a movie");
 		this.setLocation(325, 125);
 		this.setResizable(false);
@@ -54,11 +60,11 @@ public class BTTLogisticsGUI extends JFrame implements ActionListener{
 		movieCbx = new JComboBox<String>();
 		movieCbx.setBounds(230, 70, 140, 30);
 		this.add(movieCbx);
-		if (this.movieList == null && this.movieList.size() == 0) {
+		if (this.movies == null && this.movies.size() == 0) {
 			movieCbx.addItem("select movie");
 		} else {
 			movieCbx.addItem("select movie");
-			for (Movie movie : movieList) {
+			for (Movie movie : movies) {
 				movieCbx.addItem(movie.getTitle());
 			}
 		}
@@ -71,7 +77,7 @@ public class BTTLogisticsGUI extends JFrame implements ActionListener{
 		roomCbx = new JComboBox<String>();
 		roomCbx.setBounds(230, 120, 140, 30);
 		this.add(roomCbx);
-		//roomCbx.addItemListener(this);
+		// roomCbx.addItemListener(this);
 		if (this.rooms == null && this.rooms.size() == 0) {
 			roomCbx.addItem("select room");
 		} else {
@@ -84,15 +90,11 @@ public class BTTLogisticsGUI extends JFrame implements ActionListener{
 			@Override
 			public void itemStateChanged(ItemEvent e) {
 				startTime.removeAllItems();
-				DefaultComboBoxModel<ShowTime> timeModel =  new DefaultComboBoxModel<ShowTime>();
+			
 				if (e.getStateChange() == ItemEvent.SELECTED) {
 					String selRoom = e.getItem().toString();
-					for (ShowTime showTime : showtimes) {
-						Room room = showTime.getRoom();
-						if (room.getRoomNumber().equals(selRoom)) {
-							timeModel.addElement(showTime);
-						}
-					}
+				
+					DefaultComboBoxModel<ShowTime> timeModel = showtimelist.setShowTime(selRoom);
 					startTime.setModel(timeModel);
 				}
 			}
@@ -105,7 +107,7 @@ public class BTTLogisticsGUI extends JFrame implements ActionListener{
 		startTime = new JComboBox<ShowTime>();
 		startTime.setBounds(230, 170, 140, 30);
 		this.add(startTime);
-		//startTime.addItemListener(this);
+		// startTime.addItemListener(this);
 
 		JButton seatBtn = new JButton("Choose The Seat");
 		seatBtn.setBounds(325, 260, 170, 40);
@@ -115,19 +117,19 @@ public class BTTLogisticsGUI extends JFrame implements ActionListener{
 			public void actionPerformed(ActionEvent e) {
 				// TODO 需要判断各个下拉数据是否选择
 				String movieTitle = movieCbx.getSelectedItem().toString();
-				if(movieTitle==null&&"select movie".equals(movieTitle)) {
+				if (movieTitle == null && "select movie".equals(movieTitle)) {
 					displayMessage("Please select movie!");
 					return;
 				}
 				String roomTitle = roomCbx.getSelectedItem().toString();
-				if(roomTitle==null&&"select room".equals(roomTitle)) {
+				if (roomTitle == null && "select room".equals(roomTitle)) {
 					displayMessage("Please select room!");
 					return;
 				}
-				setGloabData(movieTitle,roomTitle);
-				List<Seat> seats=new Seat().getAllSeat();
-				int seatNums=seats.size();
-				new SeatingGUI2(seatNums,seats);
+				setGloabData(movieTitle, roomTitle);
+				List<Seat> seats = new Seat().getAllSeat();
+				int seatNums = seats.size();
+				new SeatingGUI2(seatNums, seats);
 				setVisible(false);
 			}
 		});
@@ -135,14 +137,9 @@ public class BTTLogisticsGUI extends JFrame implements ActionListener{
 	}
 
 	protected void setGloabData(String movieTitle, String roomTitle) {
-		AppSeting.movie.setTitle(movieTitle);
-		for (Movie movie : movieList) {
-			if(movie.getTitle().equals(movieTitle)) {
-				AppSeting.movie.setMovieId(movie.getMovieId());
-				AppSeting.movie.setPrice(movie.getPrice());
-				break;
-			}
-		}
+		//AppSeting.movie.setTitle(movieTitle);
+	movielist.setGloabData(movieTitle);
+		
 		AppSeting.showTime.getRoom().setRoomNumber(roomTitle);
 		AppSeting.showTime = (ShowTime) startTime.getSelectedItem();
 	}
@@ -151,9 +148,11 @@ public class BTTLogisticsGUI extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 	}
+
 	public void displayMessage(String errorMessage) {
 		JOptionPane.showMessageDialog(this, errorMessage);
 	}
+
 	public String getRoomNum() {
 		return roomNum;
 	}
@@ -178,12 +177,12 @@ public class BTTLogisticsGUI extends JFrame implements ActionListener{
 		this.nextBtn = nextBtn;
 	}
 
-	public List<Movie> getMovieList() {
-		return movieList;
+	public MovieList getMovieList() {
+		return movielist;
 	}
 
-	public void setMovieList(List<Movie> movieList) {
-		this.movieList = movieList;
+	public void setMovieList(MovieList movieList) {
+		this.movielist = movielist;
 	}
 
 	public JComboBox<String> getMovieCbx() {

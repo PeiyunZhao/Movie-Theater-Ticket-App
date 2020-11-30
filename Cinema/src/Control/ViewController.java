@@ -101,12 +101,13 @@ public class ViewController {
 	public void showLogisticGUI() {
 		MovieList movieList = new MovieList();
 		ShowTimeList showList = new ShowTimeList();
-		new LogisticsGUI(movieList.getMovies(),showList.getShowtimes(),showList.getRooms());
+
+		new LogisticsGUI(movieList,showList,showList.getRooms());
 	}
 	
 	public void showBTTLogisticGUI() {
 		MovieList movieList = new MovieList();
 		ShowTimeList showList = new ShowTimeList();
-		new BTTLogisticsGUI(movieList.getBookMovies(),showList.getShowtimes(),showList.getRooms());
+		new BTTLogisticsGUI(movieList,showList,showList.getRooms());
 	}
 }

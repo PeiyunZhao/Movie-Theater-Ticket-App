@@ -7,9 +7,7 @@ public class Room {
 	private ArrayList<Seat> seats;
 	private String roomNumber;
 	
-	public void displaySeats() {
-		
-	}
+	
 	public ArrayList<Seat> getSeats() {
 		return seats;
 	}

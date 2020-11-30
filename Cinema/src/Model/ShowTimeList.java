@@ -5,12 +5,16 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.DefaultComboBoxModel;
+
 import Control.DBController;
 
 public class ShowTimeList {
 
 	private List<Room> rooms;
 	private List<ShowTime> showtimes;
+
+	
 	public ShowTimeList() {
 		rooms = new ArrayList<Room>();
 		showtimes = new ArrayList<ShowTime>();
@@ -36,6 +40,18 @@ public class ShowTimeList {
 			e.printStackTrace();
 		}
 		return rooms;
+	}
+	
+	
+	public DefaultComboBoxModel<ShowTime> setShowTime(String selRoom){
+		DefaultComboBoxModel<ShowTime> timeModel =  new DefaultComboBoxModel<ShowTime>();
+		for (ShowTime showTime : showtimes) {
+			Room room = showTime.getRoom();
+			if (room.getRoomNumber().equals(selRoom)) {
+				timeModel.addElement(showTime);
+			}
+		}
+			return timeModel;
 	}
 
 	public List<ShowTime> getShowtimes() {

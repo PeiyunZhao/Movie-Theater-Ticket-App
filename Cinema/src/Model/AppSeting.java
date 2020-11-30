@@ -27,8 +27,7 @@ public class AppSeting {
 		}
 
 		if (seat.getSeatId() != 0) {
-			//String sql = "update seat set userid='" + userid + "',ticketid=" + ticketNum + ",sshowid=" + sshowid
-			//		+ ",seattaken=1 where seatid=" + seat.getSeatId();
+			
 			String sql ="insert into ticket(ticketid,mid,userid,sshowid,seatid,buyTime)values("+ticketNum+","+
 			movie.getMovieId()+",'"+userid+"',"+sshowid+","+seat.getSeatId()+",now())";
 			System.out.println(sql);
@@ -44,7 +43,6 @@ public class AppSeting {
 	public static List<String> getSeatIdsByMovieId(){
 		List<String> seats=new ArrayList<String>();
 		int mid = movie.getMovieId();
-		String roomid = showTime.getRoom().getRoomNumber();
 		int showtimeId= showTime.getStid();
 		if(mid==0) {
 			return null;

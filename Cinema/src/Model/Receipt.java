@@ -14,11 +14,6 @@ public class Receipt {
 		return receipt;
 	}
 	
-	public void refund() {
-		
-	}
-	
-	
 	
 	public Ticket getTicket() {
 		return ticket;

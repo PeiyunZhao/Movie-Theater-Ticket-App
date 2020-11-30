@@ -2,6 +2,9 @@ package Model;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
+
+import javax.swing.DefaultComboBoxModel;
 
 import Control.DBController;
 
@@ -9,7 +12,9 @@ public class ShowTime {
 
 	private int stid;
 	private Room room;
-	private String dateTime; 
+	private String dateTime;
+	private List<ShowTime> showtimes;
+	
 	public ShowTime() {
 		room = new Room();
 	}
@@ -31,13 +36,14 @@ public class ShowTime {
 		}
 		return showTime;
 	}
+	
+
+
+	
+	
 	@Override
 	public String toString() {
 		return this.dateTime;
-	}
-
-	public void displaySeats() {
-
 	}
 
 	public Seat selectSeat() {

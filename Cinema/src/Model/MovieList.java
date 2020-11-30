@@ -49,6 +49,17 @@ public class MovieList {
 		return movies;
 	}
 
+	public void setGloabData(String movieTitle) {
+		AppSeting.movie.setTitle(movieTitle);
+		for (Movie movie : movies) {
+		if (movie.getTitle().equals(movieTitle)) {
+			AppSeting.movie.setMovieId(movie.getMovieId());
+			AppSeting.movie.setPrice(movie.getPrice());
+			break;
+		}
+	}
+	}
+	
 	public void setMovies(ArrayList<Movie> movies) {
 		this.movies = movies;
 	}

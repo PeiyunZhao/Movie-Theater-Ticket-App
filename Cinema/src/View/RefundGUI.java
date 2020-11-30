@@ -71,29 +71,34 @@ public class RefundGUI extends JFrame {
 					displayMessage("Please Enter Ticket Number!");
 					return;
 				}
+				
+				
 				Ticket ticket = new Ticket();
 				AppSeting.ticket =  ticket.getTicketById(tkNum);
 				if(AppSeting.ticket==null) {
 					tipMesg.setText("Can't find ficket,try again....");
 				}else {
 				
-					ShowTime showTime = new ShowTime();
-					AppSeting.showTime=	showTime.getTicketById(AppSeting.ticket.getShowtime().getStid()+"");
-					boolean isrefund = ticket.refund(AppSeting.showTime.getDateTime());
-					if(isrefund) {
-						if("N/A".equals(AppSeting.ticket.getUserId())){
-							AppSeting.userType="NU";
+//					ShowTime showTime = new ShowTime();
+//					AppSeting.showTime=	showTime.getTicketById(AppSeting.ticket.getShowtime().getStid()+"");
+//					boolean isrefund = ticket.refund(AppSeting.showTime.getDateTime());
+//					if(isrefund) {
+				//		if("N/A".equals(AppSeting.ticket.getUserId())){
+					if(ticket.checkRefundUser()==1) {
+
 							setVisible(false);
 							new RefundOUConfirmationGUI();
-						}else {
-							AppSeting.userType="RU";
-							AppSeting.user = new RegisteredUser().getUserById(AppSeting.ticket.getUserId());
+						}if (ticket.checkRefundUser()==2){
+							//AppSeting.userType="RU";
+							//AppSeting.user = new RegisteredUser().getUserById(AppSeting.ticket.getUserId());
 							setVisible(false);
 							new RefundRUConfirmationGUI();
 						}
-					}else {
+					else {
 						tipMesg.setText("<html>The film cannot be refunded within 72 hours of opening....</html>");
-					}
+					
+				}
+
 				}
 			}
 		});

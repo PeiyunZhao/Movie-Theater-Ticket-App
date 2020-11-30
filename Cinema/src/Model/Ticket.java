@@ -6,6 +6,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import Control.DBController;
+import View.RefundOUConfirmationGUI;
+import View.RefundRUConfirmationGUI;
 import utils.DateUtils;
 
 public class Ticket {
@@ -23,9 +25,6 @@ public class Ticket {
 		seat = new Seat();
 	}
 
-	public void takeSeat() {
-
-	}
 
 	public boolean refund(String showTime) {
 		boolean isRefund = false;
@@ -38,6 +37,25 @@ public class Ticket {
 		return isRefund;
 	}
 
+	public int checkRefundUser() {
+
+		ShowTime showTime = new ShowTime();
+		AppSeting.showTime=	showTime.getTicketById(AppSeting.ticket.getShowtime().getStid()+"");
+		boolean isrefund = refund(AppSeting.showTime.getDateTime());
+		if(isrefund) {
+			if("N/A".equals(AppSeting.ticket.getUserId())){
+				AppSeting.userType="NU";
+				return 1;
+			}else {
+				AppSeting.userType="RU";
+				AppSeting.user = new RegisteredUser().getUserById(AppSeting.ticket.getUserId());
+				return 2;
+			}
+			
+	}
+		return 0;
+	}
+	
 	public Ticket getTicketById(String tkId) {
 		Ticket ticket = null;
 		String sql = "select * from ticket where ticketid=" + tkId;

@@ -3,13 +3,14 @@ package Model;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 import Control.DBController;
 
 public class Movie {
 	
 	private String title;
-	private ArrayList<Theater> theaters;
+	private List<Movie> movieList;
 	private int MovieId;
 	private boolean reservationOnly;
 	private Double price;
@@ -33,6 +34,17 @@ public class Movie {
 			e.printStackTrace();
 		}
 		return movie;
+	}
+	
+	public void setGloabData(String movieTitle) {
+		AppSeting.movie.setTitle(movieTitle);
+		for (Movie movie : movieList) {
+		if (movie.getTitle().equals(movieTitle)) {
+			AppSeting.movie.setMovieId(movie.getMovieId());
+			AppSeting.movie.setPrice(movie.getPrice());
+			break;
+		}
+	}
 	}
 	
 	public Double getPrice() {

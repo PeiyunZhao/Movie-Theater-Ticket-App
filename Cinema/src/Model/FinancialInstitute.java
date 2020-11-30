@@ -1,12 +1,29 @@
 package Model;
 
+import Control.DBController;
+
 public class FinancialInstitute {
 
 	private String bankName;
 	private String userName;
 	private double cardNumber;
 	private String userAddress;
+	private DBController db;
+	public FinancialInstitute() {
+		this.db = new DBController();
+		
+	
+	}
 
+	public int updateBalance(double price,String creditCard) {
+		String sql = "update bankaccount set balance=balance-" + price + " where acard=" + creditCard;
+		System.out.println(sql);
+		int num = db.insertToTable(sql);
+		return num;
+		
+	}
+	
+	
 	public boolean validate() {
 		return true;
 	}

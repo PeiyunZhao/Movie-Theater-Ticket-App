@@ -18,6 +18,7 @@ public class RegisteredUser extends User {
 		return num;
 	}
 	
+	
 	public User login(String username,String password) {
 		String sql="select * from registered_user where uname='"+username+"' and upassword='"+password+"'";
 		return queryUser(sql);
@@ -51,6 +52,40 @@ public class RegisteredUser extends User {
 		return true;
 	}
 
+	public boolean refund() {
+		double price = AppSeting.movie.getPrice();
+		String creditCard = AppSeting.user.getCreditCard();
+
+		DBController db = new DBController();
+		String sql = "update bankaccount set balance=balance+" + price + " where acard="+creditCard;
+		System.out.println(sql);
+		int num = db.insertToTable(sql);
+		if (num == -1) {
+			return false;
+		
+		}
+		String sql2 = "delete from ticket where ticketid=" + AppSeting.ticket.getTicketId();
+		System.out.println(sql2);
+		num = db.insertToTable(sql2);
+		if (num == -1) {
+			return false;
+		
+		}
+		return true;
+	}
+	
+	
+	@Override
+	public boolean checkUserInfo(String username, String card, String pwd, String email) {
+		
+			if (!username.equals(AppSeting.user.getName())||!pwd.equals(AppSeting.user.getPwd())||(!card.equals(AppSeting.user.getCreditCard() + ""))||!email.equals(AppSeting.user.getEmail())) {
+			
+				return false;
+			}
+			return true;
+		
+
+}
 	@Override
 	public void makePayment() {
 		// TODO Auto-generated method stub

@@ -122,7 +122,11 @@ public class NewUserRegisterGUI extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(checkTheInput()) {
+					
+					
 					RegisteredUser user=new RegisteredUser();
+			//		user.setRegisteredUser(user);
+					//TODO: discuss and set below code in registereduser
 					user.setName(userNameTxt.getText().trim());
 					user.setPwd(pwdTxt.getText().trim());
 					user.setCreditCard(cardTxt.getText().trim());

@@ -17,6 +17,9 @@ public class Coupon {
 	public void setCredit(double credit) {
 		this.credit = credit;
 	}
-	
+	public int generateCouponId() {
+		int couponNum = (int) (Math.random() * (1000000 - 1999) + 1000);
+		return couponNum;
+	}
 	
 }

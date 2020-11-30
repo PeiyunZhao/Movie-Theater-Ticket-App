@@ -14,6 +14,8 @@ import javax.swing.SwingConstants;
 import Control.DBController;
 import Model.AppSeting;
 import Model.Movie;
+import Model.OrdinaryUser;
+import Model.RegisteredUser;
 
 import javax.swing.JButton;
 
@@ -64,23 +66,32 @@ public class RefundRUConfirmationGUI extends JFrame {
 		if (AppSeting.movie == null) {
 			JOptionPane.showMessageDialog(this, "System Error......");
 		} else {
-			double price = AppSeting.movie.getPrice();
-			String creditCard = AppSeting.user.getCreditCard();
-
-			DBController db = new DBController();
-			String sql = "update bankaccount set balance=balance+" + price + " where acard="+creditCard;
-			System.out.println(sql);
-			int num = db.insertToTable(sql);
-			if (num == -1) {
-				JOptionPane.showMessageDialog(this, "System Error......");
-			}
-
-			String sql2 = "delete from ticket where ticketid=" + AppSeting.ticket.getTicketId();
-			System.out.println(sql2);
-			num = db.insertToTable(sql2);
-			if (num == -1) {
-				JOptionPane.showMessageDialog(this, "System Error......");
-			}
+//			double price = AppSeting.movie.getPrice();
+//			String creditCard = AppSeting.user.getCreditCard();
+//
+//			DBController db = new DBController();
+//			String sql = "update bankaccount set balance=balance+" + price + " where acard="+creditCard;
+//			System.out.println(sql);
+//			int num = db.insertToTable(sql);
+			
+//			if (num == -1) {
+//				JOptionPane.showMessageDialog(this, "System Error......");
+//			}
+//
+//			String sql2 = "delete from ticket where ticketid=" + AppSeting.ticket.getTicketId();
+//			System.out.println(sql2);
+//			num = db.insertToTable(sql2);
+//			if (num == -1) {
+//				JOptionPane.showMessageDialog(this, "System Error......");
+//			}
+			  RegisteredUser ru=new RegisteredUser();
+			   boolean successRefund=ru.refund();
+			  if(successRefund==false) {
+				  JOptionPane.showMessageDialog(this, "System Error......");
+			  }
+			
+			
+			
 		}
 		JButton backBtn = new JButton("Back To Main Page");
 		backBtn.setBounds(139, 219, 160, 28);

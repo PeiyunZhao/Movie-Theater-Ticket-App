@@ -9,9 +9,7 @@ public class BankAccount {
 	private String pwd;
 	private Double balance;
 	
-	public BankAccount() {
-	}
-
+	
 	public int getAccountId() {
 		return accountId;
 	}

@@ -1,6 +1,7 @@
 package View;
 
 import java.awt.EventQueue;
+
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -15,6 +16,7 @@ import Control.DBController;
 import Model.AppSeting;
 import Model.Coupon;
 import Model.Movie;
+import Model.OrdinaryUser;
 
 import javax.swing.JTextField;
 import javax.swing.JButton;
@@ -75,31 +77,39 @@ public class RefundOUConfirmationGUI extends JFrame {
 		couponNumTxt.setEditable(false);
 		couponNumTxt.setColumns(10);
 
-		int couponNum = (int) (Math.random() * (1000000 - 1999) + 1000);
+		//int couponNum = (int) (Math.random() * (1000000 - 1999) + 1000);
+		Coupon coupon = new Coupon();
+		int couponNum=coupon.generateCouponId();
 		couponNumTxt.setText(couponNum + "");
 
 		AppSeting.movie = new Movie().getMovieById(AppSeting.ticket.getMovieId());
 		if (AppSeting.movie == null) {
 			JOptionPane.showMessageDialog(this, "System Error......");
 		} else {
-
-			double price = AppSeting.movie.getPrice();
-			double couponPrice = price - price * 0.15;
-
-			DBController db = new DBController();
-			String sql = "insert into coupon(couponId,credit)values(" + couponNum + "," + couponPrice + ")";
-			System.out.println(sql);
-			int num = db.insertToTable(sql);
-			if (num == -1) {
-				JOptionPane.showMessageDialog(this, "System Error......");
-			}
-
-			String sql2 = "delete from ticket where ticketid=" + AppSeting.ticket.getTicketId();
-			System.out.println(sql2);
-			num = db.insertToTable(sql2);
-			if (num == -1) {
-				JOptionPane.showMessageDialog(this, "System Error......");
-			}
+			
+		   OrdinaryUser ou=new OrdinaryUser();
+		   boolean successRefund=ou.refund(couponNum);
+		  if(successRefund==false) {
+			  JOptionPane.showMessageDialog(this, "System Error......");
+		  }
+//
+//			double price = AppSeting.movie.getPrice();
+//			double couponPrice = price - price * 0.15;
+//
+//			DBController db = new DBController();
+//			String sql = "insert into coupon(couponId,credit)values(" + couponNum + "," + couponPrice + ")";
+//			System.out.println(sql);
+//			int num = db.insertToTable(sql);
+//			if (num == -1) {
+//				JOptionPane.showMessageDialog(this, "System Error......");
+//			}
+//
+//			String sql2 = "delete from ticket where ticketid=" + AppSeting.ticket.getTicketId();
+//			System.out.println(sql2);
+//			num = db.insertToTable(sql2);
+//			if (num == -1) {
+//				JOptionPane.showMessageDialog(this, "System Error......");
+//			}
 		}
 
 		JLabel lblNewLabel_1_1 = new JLabel("Coupon is valid for 1 year");

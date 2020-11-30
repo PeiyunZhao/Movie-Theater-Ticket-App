@@ -13,6 +13,7 @@ public abstract class User {
 	private Seat seat;
 	private Ticket wantsTicket;
 	private FinancialInstitute financialInstitute;
+
 	
 	public User() {
 		seat = new Seat();
@@ -93,5 +94,10 @@ public abstract class User {
 		this.financialInstitute = financialInstitute;
 	}
 	
+
+	public boolean checkUserInfo(String username, String card, String pwd, String email) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 
 }
