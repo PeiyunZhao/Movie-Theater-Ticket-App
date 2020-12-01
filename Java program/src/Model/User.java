@@ -13,8 +13,12 @@ public abstract class User {
 	private Ticket wantsTicket;
 	private FinancialInstitute financialInstitute;
 	
-//	public abstract void makePayment();
-//	public abstract void getRefund(int receiptId);
+	public User() {
+		
+	}
+	
+	public abstract void makePayment();
+	public abstract void getRefund(int receiptId);
 	public abstract void getUserInformation();
 
 	

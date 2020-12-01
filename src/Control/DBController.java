@@ -11,7 +11,7 @@ public class DBController {
 	public Statement statement;
 	public String localhost = "3306", databaseName = "movieTheatre";
 	public String connectionInfo = "jdbc:mysql://localhost:" + localhost + "/" + databaseName + "?serverTimezone=UTC",
-			login = "root", password = "lindaA5585769.";
+			login = "root", password = "Rosewoodd1211";
 
 	public DBController() {
 		try {

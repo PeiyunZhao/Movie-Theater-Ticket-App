@@ -4,7 +4,14 @@ import java.time.*;
 
 public class RegisteredUser extends User{
 	private LocalDateTime lastpaid;
+	private String password;
 	
+	public RegisteredUser(User user, String password) {
+		// TODO Auto-generated constructor stub
+		
+		
+	}
+
 	public boolean paidAnnual() {
 		LocalDateTime from = lastpaid;
         LocalDateTime to = LocalDateTime.now();
@@ -32,6 +39,14 @@ public class RegisteredUser extends User{
 	public void getUserInformation() {
 		// TODO Auto-generated method stub
 		
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 }

@@ -1,7 +1,7 @@
 package Control;
 
 
-import Model.RegisteredUserList;
+import Model.RegisteredUser;
 import Model.Ticket;
 import Model.User;
 
@@ -9,7 +9,6 @@ public class UserController {
 		
 	private User user;
 	private MainController MainController;
-	private RegisteredUserList registeredUsers;
 	
 	public UserController (User u) {
 		this.user=u;
