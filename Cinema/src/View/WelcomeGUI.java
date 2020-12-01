@@ -12,11 +12,7 @@ import Model.AppSeting;
 
 public class WelcomeGUI extends JFrame{
 
-	private ViewController viewController;
-	
 	public WelcomeGUI() {
-		viewController = new ViewController();
-		
 		this.setTitle("Welcome");
 		this.setSize(635, 339);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -37,7 +33,7 @@ public class WelcomeGUI extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				AppSeting.option="buy";
 				setVisible(false);
-				viewController = new ViewController();
+				ViewController viewController = new ViewController();
 				viewController.showLogisticGUI();
 			}
 		});
@@ -50,6 +46,7 @@ public class WelcomeGUI extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				AppSeting.option="booking";
 				setVisible(false);
+				ViewController viewController = new ViewController();
 				viewController.showBTTLogisticGUI();
 			}
 		});
@@ -61,7 +58,7 @@ public class WelcomeGUI extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
-				viewController.showNewUserRegisterGUI();
+				new NewUserRegisterGUI();
 			}
 		});
 		
@@ -72,7 +69,7 @@ public class WelcomeGUI extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
-				viewController.showRefundGUI();
+				new RefundGUI();
 			}
 		});
 		this.setVisible(true);

@@ -5,7 +5,14 @@ import java.util.List;
 import Model.MovieList;
 import Model.Seat;
 import Model.ShowTimeList;
-import View.*;
+import View.BTTLogisticsGUI;
+import View.LoginGUI;
+import View.LogisticsGUI;
+import View.OrdinaryUserGUI;
+import View.PaymentGUI;
+import View.RefundGUI;
+import View.RegisteredUserGUI;
+import View.SeatingGUI;
 
 public class ViewController {
 	private LoginGUI loginGUI;
@@ -14,7 +21,6 @@ public class ViewController {
 	private PaymentGUI paymentGUI;
 	private RefundGUI refundGUI;
 	private SeatingGUI seatingGUI;
-	private NewUserRegisterGUI newUserRegisterGUI;
 
 	public void showLoginGUI() {
 		loginGUI = new LoginGUI();
@@ -103,10 +109,5 @@ public class ViewController {
 		MovieList movieList = new MovieList();
 		ShowTimeList showList = new ShowTimeList();
 		new BTTLogisticsGUI(movieList,showList,showList.getRooms());
-	}
-
-	public void showNewUserRegisterGUI() {
-		this.newUserRegisterGUI= new newUserRegisterGUI();
-		
 	}
 }

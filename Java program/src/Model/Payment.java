@@ -50,7 +50,6 @@ public class Payment {
 		//communication with financial institution would happen here....
 		//
 		
-
 		System.out.println("verified payment");
 
 		return true;
